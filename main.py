@@ -24,6 +24,8 @@ def enter():
 def getAnswer(question):
     #replaces math calls with valid python values
     question = question.replace("inf", "float('inf')")
+    question = question.replace("[", "(")
+    question = question.replace("]", ")")
     #splices in extra info for function to run
     question = "calculations."+question[0:-1]+", historyBox, tk"+question[-1:]
     #run input string as code and call function
@@ -86,15 +88,15 @@ def help():
     helpWindow.geometry("500x500")
     frame2 = tk.Frame(helpWindow, bg="goldenrod")
     frame2.pack()
-    limitL = tk.Label(frame2, text="Limit:\nlimit('y', 'x', v)\ny= function\nx= symbol being limitted\nv= value symbol is going towards (inf for infinity)", bg="goldenrod", justify=tk.LEFT)
+    limitL = tk.Label(frame2, text="Limit:\nlimit['y', 'x', v]\ny= function\nx= symbol being limitted\nv= value symbol is going towards (inf for infinity)", bg="goldenrod", justify=tk.LEFT)
     limitL.grid(column=0, row=0)
-    derL = tk.Label(frame2, text="Derivative:\nder('y', 'x')\ny= function\nx= symbol being derived", bg="goldenrod", justify=tk.LEFT)
+    derL = tk.Label(frame2, text="Derivative:\nder['y', 'x']\ny= function\nx= symbol being derived", bg="goldenrod", justify=tk.LEFT)
     derL.grid(column=1, row=0)
-    difL = tk.Label(frame2, text="Differential:\ndif('y', 'x')\ny= function\nx= symbol being differentiated", bg="goldenrod", justify=tk.LEFT)
+    difL = tk.Label(frame2, text="Differential:\ndif['y', 'x']\ny= function\nx= symbol being differentiated", bg="goldenrod", justify=tk.LEFT)
     difL.grid(column=0, row=1)
     helpWindow.mainloop()
 
-#GUI for calculator
+#GUI for calculator (main gui)
 window = tk.Tk()
 window.title("Calc Calculator")
 window["bg"] = "goldenrod"
