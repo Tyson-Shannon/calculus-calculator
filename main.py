@@ -32,10 +32,10 @@ def getAnswer(question):
     #splices in extra info for function to run
     question = "calculations."+question[0:-1]+", historyBox, tk"+question[-1:]
     #run input string as code and call function
-    try:
-        exec(question)
-    except:
-        historyBox.insert(tk.END, "Command error, check help for assistance.\n")
+    #try:
+    exec(question)
+    #except:
+        #historyBox.insert(tk.END, "Command error, check help for assistance.\n")
 
 #GUI and algorithm for how to get a C
 def cPLZ():
@@ -88,7 +88,7 @@ def help():
     helpWindow = tk.Tk()
     helpWindow.title("Help")
     helpWindow["bg"] = "goldenrod"
-    helpWindow.geometry("550x550")
+    helpWindow.geometry("550x700")
     frame2 = tk.Frame(helpWindow, bg="goldenrod")
     frame2.pack()
     limitL = tk.Label(frame2, text="Limit:\nlimit['f', 'x', v]\nf= function\nx= symbol being limitted\nv= value symbol is going towards", bg="goldenrod", justify=tk.LEFT)
@@ -103,6 +103,19 @@ def help():
     int2L.grid(column=0, row=2)
     washL = tk.Label(frame2, text="Washer Method:\nwasher['f', 'g', 'x', l, u]\nf= function 1\ng= function 2\nx= symbol being integrated\nl= lower limit\nu= upper limit", bg="goldenrod", justify=tk.LEFT)
     washL.grid(column=1, row=2)
+    discxL = tk.Label(frame2, text="Disc Method x-axis:\ndiscx['f', 'x', l, u]\nf= function\nx= symbol being integrated\nl= lower limit\nu= upper limit", bg="goldenrod", justify=tk.LEFT)
+    discxL.grid(column=0, row=3)
+    discyL = tk.Label(frame2, text="Disk Method y-axis:\ndiscy['f', 'y', l, u]\nf= function\ny= symbol being integrated\nl= lower limit\nu= upper limit", bg="goldenrod", justify=tk.LEFT)
+    discyL.grid(column=1, row=3)
+    riemL = tk.Label(frame2, text="Riemann Sums:\nriemann(_)['f', 'x', l, u, n]\n(_)= l/m/r for left/middle/right\nf= function\nx= symbol being summed\nl= lower limit\nu= upper limit\nn= number of slices", bg="goldenrod", justify=tk.LEFT)
+    riemL.grid(column=0, row=4)
+    seqL = tk.Label(frame2, text="Sequence:\nseq['f', 'x', n]\nf= function\nx= symbol being changed\nn= starting point", bg="goldenrod", justify=tk.LEFT)
+    seqL.grid(column=1, row=4)
+    serL = tk.Label(frame2, text="Series:\nseries['f', 'x', n]\nf= function\nx= symbol being changed\nn= starting point", bg="goldenrod", justify=tk.LEFT)
+    serL.grid(column=0, row=5)
+    arcL = tk.Label(frame2, text="Arc Length:\narcl['fPrime', 'x', l, u]\nfPrime= function 1st derivative\nx= symbol being integrated\nl= lower limit\nu= upper limit", bg="goldenrod", justify=tk.LEFT)
+    arcL.grid(column=1, row=5)
+
     explain = tk.Label(helpWindow, text="inf for infinity\npi for pi\nBoth [] and () will work\nQuote non-numerical values such as variables and functions ie. 'x'", bg="yellow")
     explain.pack()
     helpWindow.mainloop()
